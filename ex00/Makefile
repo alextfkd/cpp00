@@ -7,9 +7,9 @@ SRCS = megaphone.cpp
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-all: $(NAME)
+all: cpplint $(NAME)
 
-$(NAME): cpplint
+$(NAME):
 	$(CC) $(CFLAGS) $(SRCS) -o $@ 
 
 cppformat:

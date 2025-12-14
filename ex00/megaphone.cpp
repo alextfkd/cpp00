@@ -6,17 +6,17 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 02:32:28 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/10 03:06:07 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/11 02:11:55 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#define NOISE "* LOUD AND UNBEARABLE FEEDBACK NOISE *"
 
 static void str2upper(char* str);
 
 int main(int argc, char* argv[]) {
   if (argc == 1) {
+    const std::string NOISE = "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
     std::cout << NOISE << std::endl;
     return (0);
   }
