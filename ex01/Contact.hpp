@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:08:19 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/14 01:00:22 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/15 08:40:40 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ class Contact {
  public:
   Contact();
   Contact(const Contact &other);
-  Contact(const std::string data[kDataLen]);
-  Contact &operator=(const Contact &other);
   ~Contact();
 
-  void        PrintName() const;
-  void        PrintInfo(size_t idx) const;
+  void PrintName() const;
+  void PrintInfo(size_t idx) const;
 
   static std::string Truncate(const std::string     &str,
                               std::string::size_type len);
   static std::string TrimSpace(std::string str);
   static bool        IsInvalidPhoneNumber(const std::string &str);
 
+  Contact &operator=(const Contact &other);
+  Contact(const std::string data[kDataLen]);
   static Contact Create();
 };
 

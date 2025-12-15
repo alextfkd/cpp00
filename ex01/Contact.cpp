@@ -143,5 +143,3 @@ Contact Contact::Create(void) {
   Contact new_contact(contact_data);
   return (new_contact);
 }
-
-
