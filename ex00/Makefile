@@ -1,32 +1,33 @@
 NAME = megaphone
 
-CC = c++ -g
-GCC = g++ -g
+CXX = c++ -g
 
 SRCS = megaphone.cpp
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+OBJS = $(addprefix ./, $(SRCS:.cpp=.o))
 
-all: cpplint $(NAME)
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
-$(NAME):
-	$(CC) $(CFLAGS) $(SRCS) -o $@ 
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 cppformat:
 	clang-format -i *.cpp
 
-hppformat:
-	clang-format -i *.hpp
+cpplint:
+	clang-tidy-12 --config-file=.clang-tidy --warnings-as-errors=* --quiet *.cpp -- -Wall -Wextra -Werror -std=c++98
 
-cpplint: cppformat
-	clang-tidy --config-file=.clang-tidy --warnings-as-errors=* --quiet *.cpp -- -Wall -Wextra -Werror -std=c++98 
-		
-hpplint: hppformat
-	clang-tidy --config-file=.clang-tidy --warnings-as-errors=* --quiet *.hpp -- -Wall -Wextra -Werror -std=c++98 
+clean:
+	rm -f $(OBJS)
 
 fclean:
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: install uninstall cppformat hppformat cpplint hpplint
+.PHONY: all clean fclean re cppformat cpplint
