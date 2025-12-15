@@ -1,28 +1,23 @@
 NAME = ex02
 
-CC = c++ -g
-GCC = g++ -g
+CXX = c++ -g
 
 SRCS = tests.cpp Account.cpp
 
-OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
+OBJS = $(addprefix ./, $(SRCS:.cpp=.o))
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 all: $(NAME)
 
-$(NAME): cpplint
-	$(CC) $(CFLAGS) $(SRCS) -o $@ 
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ 
 
-$(OBJDIR)/%.o: %.c
-	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 cppformat:
-	clang-format -i *.cpp
-
-hppformat:
-	clang-format -i *.hpp
+	clang-format -i $(SRCS) *.hpp
 
 cpplint: cppformat
 	clang-tidy --config-file=.clang-tidy --warnings-as-errors=* --quiet Account.cpp -- -Wall -Wextra -Werror -std=c++98 
@@ -35,4 +30,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: install uninstall cppformat hppformat cpplint hpplint
+.PHONY: all clean fclean re cppformat cpplint
