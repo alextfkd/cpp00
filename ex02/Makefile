@@ -11,7 +11,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ 
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
@@ -19,10 +19,10 @@ $(NAME): $(OBJS)
 cppformat:
 	clang-format -i $(SRCS) *.hpp
 
-cpplint: cppformat
-	clang-tidy --config-file=.clang-tidy --warnings-as-errors=* --quiet Account.cpp -- -Wall -Wextra -Werror -std=c++98 
-		
-clean: 
+cpplint:
+	clang-tidy-12 --config-file=.clang-tidy --warnings-as-errors=* --quiet Account.cpp -- -Wall -Wextra -Werror -std=c++98
+
+clean:
 	rm -f $(OBJS)
 
 fclean: clean

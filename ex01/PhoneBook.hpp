@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:08:22 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/15 08:50:16 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/15 21:35:29 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class PhoneBook {
 
   void PrintGuide() const;
   int  Add(const Contact& contact);
-  void ShowTable(void) const;
+  int  ShowTable(void) const;
   int  ShowInfo(size_t idx) const;
   int  Search(void) const;
   int  Run(void);

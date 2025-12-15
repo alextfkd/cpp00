@@ -24,7 +24,7 @@ PhoneBook::PhoneBook(void) {
 
 PhoneBook::~PhoneBook() { std::cout << kERR_NOTIMPL << std::endl; }
 
-void PhoneBook::ShowTable(void) const {
+int PhoneBook::ShowTable(void) const {
   std::stringstream sstream;
 
   std::cout << std::setw(PhoneBook::clim_) << "index"
@@ -34,11 +34,11 @@ void PhoneBook::ShowTable(void) const {
   std::cout << std::setw(PhoneBook::clim_) << "last name"
             << "|";
   std::cout << std::setw(PhoneBook::clim_) << "nick name"
-            << "|" << std::endl;
+            << std::endl;
   if (this->n_info_ == 0) {
     std::cout << "You will need to ADD contact information before using SEARCH."
               << std::endl;
-    return;
+    return (1);
   }
   size_t idx = 0;
   while (idx < this->n_info_) {
@@ -49,6 +49,7 @@ void PhoneBook::ShowTable(void) const {
     this->contacts_[idx].PrintName();
     idx++;
   }
+  return (0);
 }
 
 int PhoneBook::ShowInfo(size_t idx) const {
@@ -64,7 +65,9 @@ int PhoneBook::Search(void) const {
   const std::string PROMPT_ID = "Enter the index to display: ";
   size_t            user_id;
   std::string       user_id_input;
-  this->ShowTable();
+  if (this->ShowTable()) {
+	return (1);
+  }
   while (true) {
     std::cout << PROMPT_ID << std::endl;
     if (!std::getline(std::cin, user_id_input)) {
