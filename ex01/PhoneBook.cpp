@@ -102,7 +102,7 @@ int PhoneBook::Run(void) {
     };
     if (cmd == CMD_ADD) {
       Contact new_contact;
-	  if (Contact::Create(new_contact) == false){
+	  if (!Contact::FillData(new_contact)){
         return (1);
 	  }
       this->Add(new_contact);

@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:12:03 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/15 22:21:18 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/15 22:39:10 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,8 @@ bool Contact::IsInvalidPhoneNumber(const std::string &str) {
   return (false);
 }
 
-Contact Contact::Create(void) {
+//Contact Contact::Create(Contact::Contact contact) {
+bool Contact::FillData(Contact new_contact){
   const std::string MSG_ADD       = "Creating a new contact information.";
   const std::string MSG_ERR_EMPTY = "Please fill in the form.";
   const std::string prompts[Contact::kDataLen] = {
@@ -128,9 +129,7 @@ Contact Contact::Create(void) {
   while (idx < Contact::kDataLen) {
     std::cout << prompts[idx] << std::flush;
     if (!std::getline(std::cin, contact_data[idx])) {
-	  throw std::runtime_error("EOF");
-	  //return (NULL);
-      //std::exit(1);
+	  return (false);
     };
     contact_data[idx] = Contact::TrimSpace(contact_data[idx]);
     if (contact_data[idx].empty()) {
@@ -142,6 +141,10 @@ Contact Contact::Create(void) {
     }
     idx++;
   }
-  Contact new_contact(contact_data);
-  return (new_contact);
+  new_contact.first_name_ = contact_data[0];
+  new_contact.last_name_ = contact_data[1];
+  new_contact.nick_name_ = contact_data[2];
+  new_contact.phone_number_ = contact_data[3];
+  new_contact.secret_ = contact_data[4];
+  return (true);
 }
