@@ -22,7 +22,7 @@ PhoneBook::PhoneBook(void) {
   this->available_idx_ = 0;
 }
 
-PhoneBook::~PhoneBook() { std::cout << kERR_NOTIMPL << std::endl; }
+PhoneBook::~PhoneBook() { }
 
 int PhoneBook::ShowTable(void) const {
   std::stringstream sstream;
@@ -42,10 +42,10 @@ int PhoneBook::ShowTable(void) const {
   }
   size_t idx = 0;
   while (idx < this->n_info_) {
-    sstream << idx;
-    std::string sidx = sstream.str();
-    sstream.clear();
-    std::cout << std::setw(PhoneBook::clim_) << sidx << "|";
+    //sstream << idx;
+    //std::string sidx = sstream.str();
+    //sstream.clear();
+    std::cout << std::setw(PhoneBook::clim_) << idx << "|";
     this->contacts_[idx].PrintName();
     idx++;
   }
@@ -53,7 +53,7 @@ int PhoneBook::ShowTable(void) const {
 }
 
 int PhoneBook::ShowInfo(size_t idx) const {
-  if (idx > this->n_info_) {
+  if (idx > this->n_info_ - 1) {
     std::cout << "Enter valid numeric id." << std::endl;
     return (1);
   }
@@ -69,13 +69,14 @@ int PhoneBook::Search(void) const {
 	return (1);
   }
   while (true) {
-    std::cout << PROMPT_ID << std::endl;
+    std::cout << PROMPT_ID;
     if (!std::getline(std::cin, user_id_input)) {
       return (1);
     };
     std::stringstream sstream(user_id_input);
     sstream >> user_id;
     if (sstream.fail()) {
+	  std::cout << "Invalid input." << std::endl;
       continue;
     }
     if (this->ShowInfo(user_id)) {
@@ -95,19 +96,16 @@ int PhoneBook::Run(void) {
 
   while (1) {
     std::cout << PROMPT;
-    std::cin >> cmd;
-    if (std::cin.eof()) {
-      std::cout << CMD_EXIT << std::endl;
-      return (0);
-    }
-    if (std::cin.fail()) {
+    if (!std::getline(std::cin, cmd)) {
       std::cout << CMD_EXIT << std::endl;
       return (1);
-    }
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    };
     if (cmd == CMD_ADD) {
-      Contact contact = Contact::Create();
-      this->Add(contact);
+      Contact new_contact;
+	  if (Contact::Create(new_contact) == false){
+        return (1);
+	  }
+      this->Add(new_contact);
     } else if (cmd == CMD_SEARCH) {
       this->Search();
     } else if (cmd == CMD_EXIT) {

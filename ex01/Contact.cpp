@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:12:03 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/14 01:00:16 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/15 22:21:18 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ std::string Contact::TrimSpace(std::string str) {
 }
 
 bool Contact::IsInvalidPhoneNumber(const std::string &str) {
-  if (!str.find_first_not_of(Contact::kDigits)) {
+  if (str.find_first_not_of(Contact::kDigits) != std::string::npos) {
     std::cout << Contact::kMsgErrNonNumeric << std::endl;
     return (true);
   }
@@ -128,7 +128,9 @@ Contact Contact::Create(void) {
   while (idx < Contact::kDataLen) {
     std::cout << prompts[idx] << std::flush;
     if (!std::getline(std::cin, contact_data[idx])) {
-      std::exit(1);
+	  throw std::runtime_error("EOF");
+	  //return (NULL);
+      //std::exit(1);
     };
     contact_data[idx] = Contact::TrimSpace(contact_data[idx]);
     if (contact_data[idx].empty()) {
