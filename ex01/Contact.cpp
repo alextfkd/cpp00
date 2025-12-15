@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:12:03 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/14 00:53:34 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/14 01:00:16 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,6 @@ Contact &Contact::operator=(const Contact &other) {
 }
 
 Contact::~Contact() {}
-
-std::string Contact::GetFirstName() const { return (this->first_name_); }
-std::string Contact::GetLastName() const { return (this->last_name_); }
-std::string Contact::GetNickName() const { return (this->nick_name_); }
-std::string Contact::GetPhoneNum() const { return (this->phone_number_); }
-std::string Contact::GetSecret() const { return (this->secret_); }
 
 std::string Contact::Truncate(const std::string     &str,
                               std::string::size_type len) {

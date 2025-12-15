@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:08:19 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/13 03:59:27 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/14 01:00:22 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,6 @@ class Contact {
   Contact &operator=(const Contact &other);
   ~Contact();
 
-  std::string GetFirstName() const;
-  std::string GetLastName() const;
-  std::string GetNickName() const;
-  std::string GetPhoneNum() const;
-  std::string GetSecret() const;
   void        PrintName() const;
   void        PrintInfo(size_t idx) const;
 
