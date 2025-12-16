@@ -20,7 +20,7 @@ cppformat:
 	clang-format -i $(SRCS) *.hpp
 
 cpplint:
-	clang-tidy-12 --config-file=.clang-tidy --warnings-as-errors=* --quiet $(SRCS) *.hpp -- -Wall -Wextra -Werror -std=c++98 -pedantic
+	clang-tidy --config-file=.clang-tidy --warnings-as-errors=* --quiet $(SRCS) *.hpp -- -Wall -Wextra -Werror -std=c++98 -pedantic
 
 clean:
 	rm -f $(OBJS)

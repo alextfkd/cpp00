@@ -6,13 +6,15 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:08:22 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/15 21:35:29 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/16 15:40:04 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
 #include "Contact.hpp"
+
+#ifndef PHONEBOOK_H
+#define PHONEBOOK_H
 
 const std::string kERR_NOTIMPL = "This function is not implemented.";
 
@@ -41,3 +43,5 @@ class PhoneBook {
   int  Search(void) const;
   int  Run(void);
 };
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:08:19 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/16 09:39:55 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/16 15:43:17 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #ifndef CONTACT_H
 #define CONTACT_H
 
-/**
- * @brief
- *
- * @todo
- * Each member va
- */
 class Contact {
  private:
   static const size_t kMaxDigit   = 16;
@@ -40,6 +34,8 @@ class Contact {
  public:
   Contact();
   Contact(const Contact &other);
+  Contact &operator=(const Contact &other);
+  Contact(const std::string data[kDataLen]);
   ~Contact();
 
   void PrintName() const;
@@ -49,9 +45,6 @@ class Contact {
                               std::string::size_type len);
   static std::string TrimSpace(std::string str);
   static bool        IsInvalidPhoneNumber(const std::string &str);
-
-  Contact &operator=(const Contact &other);
-  Contact(const std::string data[kDataLen]);
   static bool FillData(Contact &new_contact);
 };
 
