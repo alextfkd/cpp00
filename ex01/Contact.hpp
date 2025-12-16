@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:08:19 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/15 22:44:58 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/16 09:39:55 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ class Contact {
 
   Contact &operator=(const Contact &other);
   Contact(const std::string data[kDataLen]);
-  static bool FillData(Contact new_contact);
+  static bool FillData(Contact& new_contact);
 };
 
 #endif

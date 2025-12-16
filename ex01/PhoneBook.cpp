@@ -42,9 +42,6 @@ int PhoneBook::ShowTable(void) const {
   }
   size_t idx = 0;
   while (idx < this->n_info_) {
-    //sstream << idx;
-    //std::string sidx = sstream.str();
-    //sstream.clear();
     std::cout << std::setw(PhoneBook::clim_) << idx << "|";
     this->contacts_[idx].PrintName();
     idx++;
@@ -91,7 +88,7 @@ int PhoneBook::Run(void) {
   const std::string CMD_ADD       = "ADD";
   const std::string CMD_SEARCH    = "SEARCH";
   const std::string CMD_EXIT      = "EXIT";
-  const std::string CMD_UNDEFINED = "Invalid command";
+  const std::string CMD_UNDEFINED = "Invalid command. Use ADD, SEARCH or EXIT";
   std::string       cmd;
 
   while (1) {

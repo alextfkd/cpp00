@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:12:03 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/15 22:39:10 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/16 09:39:27 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ bool Contact::IsInvalidPhoneNumber(const std::string &str) {
 }
 
 //Contact Contact::Create(Contact::Contact contact) {
-bool Contact::FillData(Contact new_contact){
+bool Contact::FillData(Contact& new_contact){
   const std::string MSG_ADD       = "Creating a new contact information.";
   const std::string MSG_ERR_EMPTY = "Please fill in the form.";
   const std::string prompts[Contact::kDataLen] = {
