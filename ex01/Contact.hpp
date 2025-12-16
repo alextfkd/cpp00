@@ -52,7 +52,7 @@ class Contact {
 
   Contact &operator=(const Contact &other);
   Contact(const std::string data[kDataLen]);
-  static bool FillData(Contact& new_contact);
+  static bool FillData(Contact &new_contact);
 };
 
 #endif

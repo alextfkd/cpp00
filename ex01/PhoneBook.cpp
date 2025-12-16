@@ -22,7 +22,7 @@ PhoneBook::PhoneBook(void) {
   this->available_idx_ = 0;
 }
 
-PhoneBook::~PhoneBook() { }
+PhoneBook::~PhoneBook() {}
 
 int PhoneBook::ShowTable(void) const {
   std::stringstream sstream;
@@ -33,8 +33,7 @@ int PhoneBook::ShowTable(void) const {
             << "|";
   std::cout << std::setw(PhoneBook::clim_) << "last name"
             << "|";
-  std::cout << std::setw(PhoneBook::clim_) << "nick name"
-            << std::endl;
+  std::cout << std::setw(PhoneBook::clim_) << "nick name" << std::endl;
   if (this->n_info_ == 0) {
     std::cout << "You will need to ADD contact information before using SEARCH."
               << std::endl;
@@ -63,7 +62,7 @@ int PhoneBook::Search(void) const {
   size_t            user_id;
   std::string       user_id_input;
   if (this->ShowTable()) {
-	return (1);
+    return (1);
   }
   while (true) {
     std::cout << PROMPT_ID;
@@ -73,7 +72,7 @@ int PhoneBook::Search(void) const {
     std::stringstream sstream(user_id_input);
     sstream >> user_id;
     if (sstream.fail()) {
-	  std::cout << "Invalid input." << std::endl;
+      std::cout << "Invalid input." << std::endl;
       continue;
     }
     if (this->ShowInfo(user_id)) {
@@ -99,9 +98,9 @@ int PhoneBook::Run(void) {
     };
     if (cmd == CMD_ADD) {
       Contact new_contact;
-	  if (!Contact::FillData(new_contact)){
+      if (!Contact::FillData(new_contact)) {
         return (1);
-	  }
+      }
       this->Add(new_contact);
     } else if (cmd == CMD_SEARCH) {
       this->Search();
