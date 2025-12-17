@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:12:03 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/16 09:39:27 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/16 23:59:48 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Contact::Contact(void) {
   this->secret_       = "";
 }
 
-Contact::Contact(const Contact &other) { *this = other; }
+Contact::Contact(const Contact& other) { *this = other; }
 
 Contact::Contact(const std::string data[Contact::Contact::kDataLen]) {
   this->first_name_   = data[0];
@@ -41,7 +41,7 @@ Contact::Contact(const std::string data[Contact::Contact::kDataLen]) {
   this->secret_       = data[4];
 }
 
-Contact &Contact::operator=(const Contact &other) {
+Contact& Contact::operator=(const Contact& other) {
   if (this != &other) {
     this->first_name_   = other.first_name_;
     this->last_name_    = other.last_name_;
@@ -54,7 +54,7 @@ Contact &Contact::operator=(const Contact &other) {
 
 Contact::~Contact() {}
 
-std::string Contact::Truncate(const std::string     &str,
+std::string Contact::Truncate(const std::string&     str,
                               std::string::size_type len) {
   std::string res;
 
@@ -102,7 +102,7 @@ std::string Contact::TrimSpace(std::string str) {
   return (str);
 }
 
-bool Contact::IsInvalidPhoneNumber(const std::string &str) {
+bool Contact::IsInvalidPhoneNumber(const std::string& str) {
   if (str.find_first_not_of(Contact::kDigits) != std::string::npos) {
     std::cout << Contact::kMsgErrNonNumeric << std::endl;
     return (true);
@@ -116,7 +116,7 @@ bool Contact::IsInvalidPhoneNumber(const std::string &str) {
 }
 
 // Contact Contact::Create(Contact::Contact contact) {
-bool Contact::FillData(Contact &new_contact) {
+bool Contact::FillData(Contact& new_contact) {
   const std::string MSG_ADD       = "Creating a new contact information.";
   const std::string MSG_ERR_EMPTY = "Please fill in the form.";
   const std::string prompts[Contact::kDataLen] = {
