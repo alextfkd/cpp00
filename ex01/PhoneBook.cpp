@@ -49,7 +49,7 @@ int PhoneBook::ShowTable(void) const {
 }
 
 int PhoneBook::ShowInfo(size_t idx) const {
-  if (idx > this->n_info_ - 1) {
+  if (idx >= this->n_info_) {
     std::cout << "Enter valid numeric id." << std::endl;
     return (1);
   }
@@ -71,7 +71,7 @@ int PhoneBook::Search(void) const {
     };
     std::stringstream sstream(user_id_input);
     sstream >> user_id;
-    if (sstream.fail()) {
+    if (sstream.fail() || !sstream.eof()) {
       std::cout << "Invalid input." << std::endl;
       continue;
     }
