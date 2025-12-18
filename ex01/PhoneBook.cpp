@@ -67,11 +67,16 @@ int PhoneBook::Search(void) const {
   while (true) {
     std::cout << PROMPT_ID;
     if (!std::getline(std::cin, user_id_input)) {
+      std::cout << std::endl;
       return (1);
     };
     std::stringstream sstream(user_id_input);
     sstream >> user_id;
-    if (sstream.fail() || !sstream.eof()) {
+    if (sstream.fail()) {
+      std::cout << "Invalid input." << std::endl;
+      continue;
+    }
+    if (sstream.eof()) {
       std::cout << "Invalid input." << std::endl;
       continue;
     }
