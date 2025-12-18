@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:12:03 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/16 23:59:48 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/18 01:07:58 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,16 @@ void Contact::PrintInfo(size_t idx) const {
 
 std::string Contact::TrimSpace(std::string str) {
   const std::string      space_letters = "\v\t\n\f\r ";
+  std::string::size_type start;
   std::string::size_type end;
-  end = str.find_first_not_of(space_letters);
-  str.erase(0, end);
+
+  start = str.find_first_not_of(space_letters);
+  if (start == std::string::npos) {
+    return ("");
+  }
+  str.erase(0, start);
+  end = str.find_last_not_of(space_letters);
+  str.erase(end + 1);
   return (str);
 }
 
@@ -107,8 +114,7 @@ bool Contact::IsInvalidPhoneNumber(const std::string& str) {
     std::cout << Contact::kMsgErrNonNumeric << std::endl;
     return (true);
   }
-  if (str.length() < Contact::kMinDigit - 1 ||
-      str.length() > Contact::kMaxDigit + 1) {
+  if (str.length() < Contact::kMinDigit || str.length() > Contact::kMaxDigit) {
     std::cout << Contact::kMsgErrDigitNum << std::endl;
     return (true);
   }
