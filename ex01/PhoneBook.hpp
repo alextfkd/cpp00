@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:08:22 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/18 00:07:56 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/18 01:41:20 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ class PhoneBook {
   Contact             contacts_[PhoneBook::max_contact_];
 
   // Hide unused constructors.
+  PhoneBook(const PhoneBook& other);
+  PhoneBook& operator=(const PhoneBook& other);
 
  public:
   // Expose using constructor & deconstructor only.
   PhoneBook(void);
-  PhoneBook(const PhoneBook& other);
-  PhoneBook& operator=(const PhoneBook& other);
   ~PhoneBook();
 
   void PrintGuide() const;
