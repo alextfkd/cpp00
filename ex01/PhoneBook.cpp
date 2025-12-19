@@ -76,10 +76,6 @@ int PhoneBook::Search(void) const {
       std::cout << "Invalid input." << std::endl;
       continue;
     }
-    if (sstream.eof()) {
-      std::cout << "Invalid input." << std::endl;
-      continue;
-    }
     if (this->ShowInfo(user_id)) {
       continue;
     }

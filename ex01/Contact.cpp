@@ -6,7 +6,7 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:12:03 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/18 01:07:58 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/19 13:03:05 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ bool Contact::FillData(Contact& new_contact) {
   while (idx < Contact::kDataLen) {
     std::cout << prompts[idx] << std::flush;
     if (!std::getline(std::cin, contact_data[idx])) {
+      std::cout << std::endl << "EXIT" << std::endl;
       return (false);
     };
     contact_data[idx] = Contact::TrimSpace(contact_data[idx]);
