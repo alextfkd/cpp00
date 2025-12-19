@@ -6,13 +6,13 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 04:08:19 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/18 00:25:20 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/19 09:18:28 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
 #ifndef CONTACT_H
 #define CONTACT_H
+#include <string>
 
 class Contact {
  private:
