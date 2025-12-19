@@ -72,7 +72,7 @@ int PhoneBook::Search(void) const {
     };
     std::stringstream sstream(user_id_input);
     sstream >> user_id;
-    if (sstream.fail()) {
+    if (sstream.fail() || !sstream.eof()) {
       std::cout << "Invalid input." << std::endl;
       continue;
     }
