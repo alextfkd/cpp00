@@ -6,13 +6,14 @@
 /*   By: tkatsuma <tkatsuma@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 02:32:28 by tkatsuma          #+#    #+#             */
-/*   Updated: 2025/12/15 21:29:06 by tkatsuma         ###   ########.fr       */
+/*   Updated: 2025/12/22 20:13:40 by tkatsuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 
-static void str2upper(char* str);
+static std::string& str2upper(std::string& str);
 
 int main(int argc, char* argv[]) {
   if (argc == 1) {
@@ -22,19 +23,22 @@ int main(int argc, char* argv[]) {
   }
   int idx = 1;
   while (idx < argc) {
-    str2upper(argv[idx]);
-    std::cout << argv[idx++];
+    std::string argv_i(argv[idx]);
+    argv_i = str2upper(argv_i);
+    std::cout << argv_i;
+    idx++;
   }
   std::cout << std::endl;
   return (0);
 }
 
-static void str2upper(char* str) {
-  char* ptr;
+static std::string& str2upper(std::string& str) {
+  size_t idx = 0;
+  size_t len = str.length();
 
-  ptr = str;
-  while (*ptr != '\0') {
-    *ptr = std::toupper(*ptr);
-    ptr++;
+  while (idx < len) {
+    str[idx] = static_cast<char>(std::toupper(static_cast<int>(str[idx])));
+    idx++;
   }
+  return (str);
 }
